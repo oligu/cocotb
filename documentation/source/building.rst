@@ -81,11 +81,6 @@ COCOTB_NVC_TRACE
 
 Set this to 1 to enable display VHPI trace when using nvc VHDL simulator.
 
-SIM_BUILD
-~~~~~~~~~
-
-Use to define a scratch directory for use by the simulator. The path is relative to the Makefile location. If not provided, the default scratch directory is "sim_build".
-
 Environment Variables
 =====================
 

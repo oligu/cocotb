@@ -204,7 +204,7 @@ class BusDriver(Driver):
     """
     _optional_signals = []
 
-    def __init__(self, entity, name, clock, **kwargs):
+    def __init__(self, entity, name, clock):
         """
         Args:
             entity (SimHandle) : a handle to the simulator entity
@@ -221,7 +221,7 @@ class BusDriver(Driver):
         self.name = name
         self.clock = clock
         self.bus = Bus(self.entity, self.name, self._signals,
-                       self._optional_signals, array_idx=kwargs.get("array_idx"))
+                       self._optional_signals)
 
     @coroutine
     def _driver_send(self, transaction, sync=True):
