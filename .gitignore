@@ -34,3 +34,6 @@ combined_results.xml
 *.tab
 sim_build
 ucli.key
+
+# IDE files
+\.idea/
