@@ -88,7 +88,7 @@ class BinaryValue(object):
                                 converting to/from a string buffer.
         """
         self._str = ""
-        self._bits = bits
+        self._bits = None
         self.big_endian = bigEndian
         self.binaryRepresentation = binaryRepresentation
         self._convert_to = {
@@ -105,6 +105,7 @@ class BinaryValue(object):
 
         if value is not None:
             self.assign(value)
+        self.set_bits(bits)
 
     def assign(self, value):
         """Decides how best to assign the value to the vector
@@ -314,7 +315,7 @@ class BinaryValue(object):
                 self._str = "0" * (self._bits - l) + self._str
         elif l > self._bits:
             print("WARNING truncating value to match requested number of bits "
-                  " (%d)" % l)
+                  "(%d -> %d)" % (l, self._bits))
             self._str = self._str[l - self._bits:]
 
     buff = property(get_buff, set_buff, None,
@@ -336,6 +337,20 @@ class BinaryValue(object):
     binstr = property(get_binstr, set_binstr, None,
                       "Access to the binary string")
 
+    def get_bits(self):
+        """Attribute bits is the number of bits of the binary value"""
+        return self._bits
+
+    def set_bits(self, bits=None):
+        print("-----------------> Pre:{} - {}".format(self._str, bits))
+        self._bits = bits
+        if bits is None:
+            self._bits = len(self._str)
+        print("----------------> Post: {}".format(self._bits))
+
+    bits = property(get_bits, set_bits, None,
+                    "Access to the number of bits of the binary value")
+    
     def hex(self):
         try:
             return hex(self.get_value())
