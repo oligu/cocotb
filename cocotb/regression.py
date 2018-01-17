@@ -277,7 +277,7 @@ class RegressionManager(object):
             start = ''
             end   = ''
             if self.log.colour:
-                start = ANSI.BLUE_BG + ANSI.BLACK_FG
+                start = ANSI.CYAN_BG + ANSI.BLACK_FG
                 end   = ANSI.DEFAULT
             # Want this to stand out a little bit
             self.log.info("%sRunning test %d/%d:%s %s" %
